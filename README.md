@@ -61,4 +61,13 @@ python manage.py runserver
 ---
 
 
+## 📸 Видео-пример html-страницы (в проекте - test.html), где использовался тег {% draw_menu %} для двух названий меню
+```
+{% draw_menu 'main_menu' %}
+{% draw_menu 'profile' %}
+```
 
+[Видео-пример](https://drive.google.com/file/d/1_2D2LwwbUmpum-c8CXNzoGvOrMNNWmzm/view?usp=drive_link)
+
+
+---
