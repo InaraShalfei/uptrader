@@ -3,6 +3,11 @@ from django.urls import reverse, NoReverseMatch
 
 
 class Menu(models.Model):
+    """
+        Represents a navigation menu.
+        A Menu serves as a container for related MenuItems. Each menu is uniquely
+        identified by its name.
+    """
     name = models.CharField(max_length=100, unique=True, verbose_name='название')
 
     class Meta:
@@ -15,6 +20,11 @@ class Menu(models.Model):
 
 
 class MenuItem(models.Model):
+    """
+        Represents a single item within a navigation menu.
+        Each MenuItem may optionally have a parent, allowing the creation
+        of hierarchical (tree-like) menu structures.
+    """
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE, related_name='items', verbose_name='меню')
     parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children',
                                verbose_name='элемент меню')
@@ -28,11 +38,12 @@ class MenuItem(models.Model):
         verbose_name_plural = 'Элементы меню'
 
     def get_url(self):
+        """ Returns the resolved URL (named URL if possible, otherwise static URL). """
         if self.named_url:
-            # try:
-                return reverse('menu:'+self.named_url)
-            # except NoReverseMatch:
-            #     return self.url
+            try:
+                return reverse('menu:' + self.named_url)
+            except NoReverseMatch:
+                return self.url
         return self.url
 
     def __str__(self):
