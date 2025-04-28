@@ -67,7 +67,7 @@ python manage.py runserver
 {% draw_menu 'profile' %}
 ```
 
-[Видео-пример](https://drive.google.com/file/d/1_2D2LwwbUmpum-c8CXNzoGvOrMNNWmzm/view?usp=drive_link)
+[Видео-пример](https://drive.google.com/file/d/1BLHkx63lpZQtlUmA2RUsf8bJqf6uZcMs/view?usp=drive_link)
 
 
 ---
