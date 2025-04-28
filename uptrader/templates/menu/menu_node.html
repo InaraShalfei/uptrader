@@ -1,0 +1,14 @@
+<li class="list-group-item {% if node.is_active %}active{% endif %}">
+    <a href="{{ node.item.get_url }}" class="{% if node.is_active %}link-light{% endif %}">
+        {{ node.item.title }}
+    </a>
+</li>
+{% if node.children and node.is_open or node.children and node.is_active %}
+    <li class="list-group-item">
+        <ul class="list-group list-group-flush">
+            {% for child in node.children %}
+                {% include 'menu/menu_node.html' with node=child %}
+            {% endfor %}
+        </ul>
+    </li>
+{% endif %}
