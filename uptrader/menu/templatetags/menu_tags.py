@@ -43,16 +43,14 @@ def draw_menu(context: RequestContext, menu_name: str) -> Dict:
 
     all_items = list(menu.items.all())
 
-    item_map: dict = {}
     tree: dict = {}
 
-    for item in all_items:
-        item_map[item.id] = {
-            'item': item,
-            'children': [],
-            'is_active': False,
-            'is_open': False
-        }
+    item_map = {item.id: {'item': item,
+                          'children': [],
+                          'is_active': False,
+                          'is_open': False
+                          }
+                for item in all_items}
 
     for item in all_items:
         if item.parent_id:
